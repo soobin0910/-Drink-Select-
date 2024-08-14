@@ -1,5 +1,4 @@
-import React from 'react';
-import "./result1.css";
+import '../css/result1.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';

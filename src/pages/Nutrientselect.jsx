@@ -1,6 +1,5 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';  // useNavigate 훅 임포트
-import "./nutrientselect.css";
+import '../css/nutrientselect.css';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';

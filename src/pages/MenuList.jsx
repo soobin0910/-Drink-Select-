@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
 import { Container, ListGroup, Image } from 'react-bootstrap';
+import '../css/MenuList.css';
 import axios from 'axios'; // 메뉴 데이터를 불러오기 위해 axios 사용
 
 function MenuList({ cafeId }) {

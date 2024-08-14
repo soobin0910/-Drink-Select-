@@ -1,14 +1,11 @@
-import React from 'react';
-import "./result2.css";
-import { useNavigate } from 'react-router-dom';
+import '../css/result2.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 
 const Result2 = () => {
-    const navigate = useNavigate();
-
     return (
+        
         <div>
                         <header className="header">
                 <h1>재추천결과</h1>
