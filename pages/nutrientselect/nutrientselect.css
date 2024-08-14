@@ -1,0 +1,31 @@
+.header {
+    margin-bottom: 20px; /* 헤더와 나머지 내용 사이에 20px 간격 */
+}
+
+.content {
+    margin-top: 20px; /* 나머지 내용과 다음 요소 사이에 20px 간격 */
+}
+
+
+/* 모든 range 슬라이더의 길이 조절 */
+.form-range {
+    width: 100%; /* 원하는 길이로 조정 */
+    margin: left; /* 중앙 정렬 */
+}
+
+/* 특정 슬라이더의 길이 조절 */
+#calorie-range,
+#sugar-range {
+    width: 40%; /* 원하는 길이로 조정 */
+    margin: left; /* 중앙 정렬 */
+}
+
+.form-group {
+    margin-bottom: 30px; /* 슬라이더 간의 간격 */
+  }
+  
+  .form-label {
+    display: block; /* 레이블을 블록으로 만들어서 슬라이더 위에 위치하게 함 */
+    margin-bottom: 10px; /* 레이블과 슬라이더 간의 간격 */
+  }
+  
