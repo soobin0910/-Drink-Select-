@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # 피클 파일을 로드 (음료 데이터)
-df = pd.read_pickle('data/drinks_data.pkl')
+df = pd.read_pickle('data/cafe.pkl')
 
 # 음료 추천을 처리하는 API
 @app.route('/api/recommend', methods=['POST'])
