@@ -1,0 +1,57 @@
+.title {
+    background: #FFEE56;
+    width: 100vw;
+    height: 15vh;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20%;
+    padding: 6%;
+}
+
+h2 {
+    margin-bottom: 20%;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.logo-wrapper {
+    padding: 7%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    text-align: center; /* 로고와 텍스트 중앙 정렬 */
+    position: relative;
+}
+
+.logo-wrapper.selected {
+    box-shadow: 0 0 0 3px #8BC34A; /* 연두색 원 */
+    border-radius: 30px;
+    transform: scale(1); /* 약간 확대 */
+}
+
+.cafe-logo {
+    width: 10vw;
+    height: 10vw; /* 이미지 크기 조정 */
+    border-radius: 50%;
+}
+
+.cafe-name {
+    margin-top: 5%; /* 이름과 로고 사이의 간격 */
+    font-size: 15px; /* 텍스트 크기 */
+    color: #333; /* 텍스트 색상 */
+    font-weight: bold; /* 텍스트 굵기 */
+}
+
+.body-wrapper {
+    min-height: 100vh; /* 뷰포트 높이를 100%로 설정하여 화면을 꽉 채움 */
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 아이템을 수직 방향으로 배열 */
+    justify-content: center; /* 수직 방향 중앙 정렬 */
+    align-items: center; /* 수평 방향 중앙 정렬 */
+    margin: 0%; /* 외부 여백 제거 */
+    padding: 0%; /* 내부 패딩 제거 */
+    width: 100vw; /* 뷰포트 너비를 100%로 설정 */
+  }
