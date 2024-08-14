@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../css/CafeSelect.css';
 
 function CafeSelect() {
     
+    const navigate = useNavigate();
     const [selected, setSelected] = useState(null); // 선택된 카페 ID 상태
 
     // 카페 로고 클릭 핸들러
@@ -47,7 +49,7 @@ function CafeSelect() {
                 </div>
             ))}
         </div>
-        <Button variant={selected ? "warning" : "secondary"} size="lg" className="my-5" disabled={!selected}>
+        <Button variant={selected ? "warning" : "secondary"} size="lg" className="my-5" disabled={!selected} onClick={() => navigate('/menulist')}>
             선택 완료
         </Button>
     </Container>
