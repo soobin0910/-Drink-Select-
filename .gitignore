@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# 가상 환경 폴더
+venv/
+
+# Python 기본
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 환경 파일
+.env
+
+# IDE 설정 파일
+.vscode/
+.idea/
+
+# 빌드 파일
+*.egg-info/
+dist/
+build/
+
+# 로그 파일
+*.log
