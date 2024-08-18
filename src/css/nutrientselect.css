@@ -28,4 +28,34 @@
     display: block; /* 레이블을 블록으로 만들어서 슬라이더 위에 위치하게 함 */
     margin-bottom: 10px; /* 레이블과 슬라이더 간의 간격 */
   }
-  
+
+/* 슬라이더 포인터 색상 변경 */
+.range-slider .range-slider__thumb {
+    background-color: #FFEE56; /* 원하는 색상으로 변경 */
+    border: 2px solid #000; /* 포인터 테두리 색상 */
+}
+
+/* Webkit 기반 브라우저용 스타일 */
+input[type='range']::-webkit-slider-thumb {
+    background-color: #FFEE56; /* 원하는 색상으로 변경 */
+    border: 2px solid #000; /* 포인터 테두리 색상 */
+    border-radius: 50%; /* 포인터를 동그랗게 만듭니다 */
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+}
+
+input[type='range']::-moz-range-thumb {
+    background-color: #FFEE56; /* 원하는 색상으로 변경 */
+    border: 2px solid #000; /* 포인터 테두리 색상 */
+    border-radius: 50%; /* 포인터를 동그랗게 만듭니다 */
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+}
+
+input[type='range']::-ms-thumb {
+    background-color: #FFEE56; /* 원하는 색상으로 변경 */
+    border: 2px solid #000; /* 포인터 테두리 색상 */
+    border-radius: 50%; /* 포인터를 동그랗게 만듭니다 */
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+}

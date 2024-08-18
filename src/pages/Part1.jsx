@@ -7,18 +7,20 @@ function Part1() {
     
     const navigate = useNavigate();
     const [selected, setSelected] = useState([]); // 선택된 카페 ID 상태
+    const [selectedNames, setSelectedNames] = useState([]); // 선택된 카페 이름 상태
 
     // 카페 로고 클릭 핸들러
-    const handleSelect = (id) => {
+    const handleSelect = (id, name) => {
         if (selected.includes(id)) {
             // 이미 선택된 카페인 경우 제거
             setSelected(selected.filter(cafeId => cafeId !== id));
+            setSelectedNames(selectedNames.filter(cafeName => cafeName !== name));
         } else {
             // 새로 선택된 카페인 경우 추가
             setSelected([...selected, id]);
+            setSelectedNames([...selectedNames, name]);
         }
     };
-
 
     // 카페 정보 (실제 사용 시 서버에서 데이터를 받거나 별도 파일로 관리할 수 있음)
     const cafes = [
@@ -44,14 +46,22 @@ function Part1() {
         <h4>(최소 1개, 최대 12개까지 선택 가능)</h4>
         <div className="logo-grid">
             {cafes.map(cafe => (
-                <div key={cafe.id} className={`logo-wrapper ${selected.includes (cafe.id) ? 'selected' : ''}`}
-                     onClick={() => handleSelect(cafe.id)}>
+                <div key={cafe.id} className={`logo-wrapper ${selected.includes(cafe.id) ? 'selected' : ''}`}
+                     onClick={() => handleSelect(cafe.id, cafe.name)}>
                     <Image src={cafe.logo} roundedCircle className="cafe-logo" />
                     <div className="cafe-name">{cafe.name}</div> {/* 카페 이름 추가 */}
                 </div>
             ))}
         </div>
-        <Button variant={selected.length > 0 ? "warning" : "secondary"} size="lg" className="my-5" disabled={selected.length === 0} onClick={() => navigate('/nutrientselect')}>
+        <Button 
+            variant={selected.length > 0 ? "warning" : "secondary"} 
+            size="lg" 
+            className="my-5" 
+            disabled={selected.length === 0} 
+            onClick={() => {
+                localStorage.setItem('selectedCafes', JSON.stringify(selectedNames));
+                navigate('/nutrientselect');
+            }}>
             선택 완료
         </Button>
     </Container>

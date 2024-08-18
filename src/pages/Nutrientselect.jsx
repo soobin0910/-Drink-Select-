@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';  // useNavigate 훅 임포트
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/nutrientselect.css';
 
 import Form from 'react-bootstrap/Form';
@@ -7,46 +8,88 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import RangeSlider from 'react-bootstrap-range-slider';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 const Nutrientselect = () => {
-    const navigate = useNavigate();  // useNavigate 훅 사용
+    const navigate = useNavigate();
+
+    const [calorieValue, setCalorieValue] = useState(0);
+    const [sugarValue, setSugarValue] = useState(0);
 
     const handleConfirmClick = () => {
-        navigate('/result1');  // '/result1' 경로로 이동
+        navigate('/result1');
     }
 
     return (
-        <div>
+        <div className="container">
             <header className="header">
                 <h1>영양성분 선택</h1>
             </header>
-            <div className="content">
-                영양성분 선택
+            <div className="content" style={{ display: 'flex', alignItems: 'center' }}>
+                <span>영양성분 선택</span>
+                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">칼로리에 대한 설명?</Tooltip>}>
+                    <span className="d-inline-block" style={{ marginLeft: '5px' }}>
+                        <Button disabled style={{ pointerEvents: 'none', backgroundColor: '#FFEE56', borderColor: '#FFEE56' }}>
+                            ?
+                        </Button>
+                    </span>
+                </OverlayTrigger>
             </div>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">칼로리에 대한 설명?</Tooltip>}>
-                <span className="d-inline-block">
-                    <Button disabled style={{ pointerEvents: 'none' }}>
-                        ?
-                    </Button>
-                </span>
-            </OverlayTrigger>
             <Form className="content">
                 <Form.Group className="form-group">
-                    <Form.Label className="form-label">칼로리</Form.Label>
-                    <Form.Range id="calorie-range" />
+                    <Form.Label className="form-label">칼로리: {calorieValue} kcal</Form.Label>
+                    <RangeSlider 
+                        value={calorieValue}
+                        min={0}
+                        max={942}
+                        step={1}
+                        tooltip='on'  // 말풍선 형태로 수치 표시
+                        tooltipLabel={(currentValue) => `${currentValue} kcal`}  // 말풍선 내용 형식 지정
+                        onChange={(e) => setCalorieValue(e.target.value)} 
+                        className="range-slider"
+                    />
                 </Form.Group>
                 <Form.Group className="form-group">
-                    <Form.Label className="form-label">당류</Form.Label>
-                    <Form.Range id="sugar-range" />
+                    <Form.Label className="form-label">당류: {sugarValue} g</Form.Label>
+                    <RangeSlider 
+                        value={sugarValue}
+                        min={0}
+                        max={217}
+                        step={1}
+                        tooltip='on'  // 말풍선 형태로 수치 표시
+                        tooltipLabel={(currentValue) => `${currentValue} g`}  // 말풍선 내용 형식 지정
+                        onChange={(e) => setSugarValue(e.target.value)} 
+                        className="range-slider"
+                    />
                 </Form.Group>
             </Form>
             <div className="content">
-                카페인 유무 선택   
+                <div style={{ marginBottom: '10px' }}>카페인 유무 선택</div>
                 <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                    <ToggleButton id="tbg-radio-2" value={1}>
+                    <ToggleButton 
+                        id="tbg-radio-2" 
+                        value={1} 
+                        style={{ 
+                            backgroundColor: '#FFEE56', 
+                            borderColor: '#FFEE56', 
+                            color: '#000', 
+                            marginRight: '5px',
+                            borderRadius: '10px'  
+                        }}
+                    >
                         예
                     </ToggleButton>
-                    <ToggleButton id="tbg-radio-3" value={2}>
+                    <ToggleButton 
+                        id="tbg-radio-3" 
+                        value={2} 
+                        style={{ 
+                            backgroundColor: '#FFEE56', 
+                            borderColor: '#FFEE56', 
+                            color: '#000',
+                            borderRadius: '10px'  
+                        }}
+                    >
                         아니오
                     </ToggleButton>
                 </ToggleButtonGroup>
@@ -62,8 +105,14 @@ const Nutrientselect = () => {
                     </div>
                 ))}
             </Form>
-            {/* 버튼 클릭 시 handleConfirmClick 함수 호출 */}
-            <Button className="content" variant="warning" onClick={handleConfirmClick}>확인</Button>{' '}
+            <Button 
+                className="content" 
+                variant="warning" 
+                onClick={handleConfirmClick}
+                style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', color: '#000' }}
+            >
+                확인
+            </Button>
         </div>
     );
 }
