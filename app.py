@@ -1,11 +1,23 @@
 import pandas as pd
 import numpy as np
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # 피클 파일을 로드 (음료 데이터)
 df = pd.read_pickle('data/cafe.pkl')
+
+# 카페 목록 및 음료 리스트 제공 API
+@app.route('/api/menus/<string:cafe_name>', methods=['GET'])
+def get_menus(cafe_name):
+    # 카페명으로 필터링
+    filtered_df = df[df['카페명'] == cafe_name]
+    menu_list = filtered_df[['카페명', '음료명']].to_dict(orient='records')
+    
+    return jsonify(menu_list)
+
 
 # 음료 추천을 처리하는 API
 @app.route('/api/recommend', methods=['POST'])
