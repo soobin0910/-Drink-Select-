@@ -19,7 +19,7 @@ const Result1 = () => {
         const excludeCoffee = JSON.parse(localStorage.getItem('excludeCoffee'));
 
         // 추천 결과를 백엔드에서 가져오기
-        fetch('http://localhost:5000/api/recommend', {  // 로컬 서버 URL로 수정
+        fetch('http://localhost:5000/api/recommend', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,8 +81,8 @@ const Result1 = () => {
                 </ListGroup>
             </Stack>
             <div className="button-container">
-                <Button variant="warning">결과 확인완료</Button>{' '}
                 <Button variant="warning" onClick={() => navigate('/result2')}>더 추천받기</Button>{' '}
+                <Button variant="warning" onClick={() => navigate('/')}>결과 확인완료</Button>{' '}
             </div>
         </div>
     );
