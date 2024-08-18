@@ -1,44 +1,52 @@
-import '../css/result1.css';
+import { useEffect } from 'react'; // 추가
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Result1 = () => {
-    const navigate = useNavigate();  // useNavigate 훅 사용
+    const navigate = useNavigate();
+    const location = useLocation();
+    const recommendations = location.state?.recommendations || [];
+
+    useEffect(() => {
+        console.log('Recommendations:', recommendations); // 데이터가 제대로 들어오는지 확인
+    }, [recommendations]);
 
     const handleConfirmClick = () => {
-        navigate('/result2');  // '/result2' 경로로 이동
+        navigate('/result2');
     }
 
     return (
-        
         <div>
             <header className="header">
                 <h1>추천결과</h1>
             </header>
             <div className="card-container" style={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}>
-                {[...Array(5)].map((_, index) => (
-                    <Card style={{ width: '18rem' }} key={index}>
-                        <Card.Img variant="top" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Forigin%2Farticle%2F202212%2Fb1d185f9edcee97179b63051ad1f6d7a25cc7066054103c32d93a091821809ce.webp%3Ff%3Dwebp%26q%3D95%26s%3D1440x1440%26t%3Dinside&type=sc960_832" />
-                        <Card.Body>
-                            <Card.Title>스타벅스</Card.Title>
-                            <Card.Text>
-                                아이스 아메리카노
-                            </Card.Text>
-                        </Card.Body>
-                        <ListGroup className="list-group-flush">
-                            <ListGroup.Item>칼로리</ListGroup.Item>
-                            <ListGroup.Item>당류</ListGroup.Item>
-                            <ListGroup.Item>포화지방</ListGroup.Item>
-                            <ListGroup.Item>카페인</ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                ))}
+                {recommendations.length > 0 ? (
+                    recommendations.map((drink, index) => (
+                        <Card style={{ width: '18rem' }} key={index}>
+                            <Card.Img variant="top" src={drink.image || 'default_image_url'} />
+                            <Card.Body>
+                                <Card.Title>{drink.카페명}</Card.Title>
+                                <Card.Text>
+                                    {drink.음료명}
+                                </Card.Text>
+                            </Card.Body>
+                            <ListGroup className="list-group-flush">
+                                <ListGroup.Item>칼로리: {drink.칼로리} kcal</ListGroup.Item>
+                                <ListGroup.Item>당류: {drink.당류} g</ListGroup.Item>
+                                <ListGroup.Item>포화지방: {drink.포화지방} g</ListGroup.Item>
+                                <ListGroup.Item>카페인: {drink.카페인} mg</ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    ))
+                ) : (
+                    <p>추천 결과가 없습니다.</p>
+                )}
             </div>
-            {/* 버튼과 카드 사이에 간격을 두기 위해 card-container 클래스 사용 */}
             <div className="button-container">
-                <Button variant="warning" >결과 확인완료</Button>{' '}
+                <Button variant="warning" onClick={() => navigate('/')}>결과 확인완료</Button>{' '}
                 <Button variant="warning" onClick={handleConfirmClick}>더 추천받기</Button>{' '}
             </div>
         </div>

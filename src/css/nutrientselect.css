@@ -1,31 +1,138 @@
 .header {
     margin-bottom: 20px; /* 헤더와 나머지 내용 사이에 20px 간격 */
+    text-align: center; /* 헤더 텍스트를 중앙 정렬 */
 }
 
 .content {
     margin-top: 20px; /* 나머지 내용과 다음 요소 사이에 20px 간격 */
+    text-align: center; /* 콘텐츠를 중앙 정렬 */
 }
-
 
 /* 모든 range 슬라이더의 길이 조절 */
 .form-range {
-    width: 100%; /* 원하는 길이로 조정 */
-    margin: left; /* 중앙 정렬 */
+    width: 100%; /* 슬라이더의 기본 길이를 100%로 설정 */
+    margin: 0 auto; /* 슬라이더를 중앙 정렬 */
 }
 
 /* 특정 슬라이더의 길이 조절 */
 #calorie-range,
 #sugar-range {
-    width: 40%; /* 원하는 길이로 조정 */
-    margin: left; /* 중앙 정렬 */
+    width: 60%; /* 슬라이더의 길이를 60%로 조정 */
+    margin: 0 auto; /* 슬라이더를 중앙 정렬 */
 }
 
 .form-group {
     margin-bottom: 30px; /* 슬라이더 간의 간격 */
-  }
-  
-  .form-label {
+    text-align: center; /* 그룹 내 요소들을 중앙 정렬 */
+}
+
+.form-label {
     display: block; /* 레이블을 블록으로 만들어서 슬라이더 위에 위치하게 함 */
     margin-bottom: 10px; /* 레이블과 슬라이더 간의 간격 */
-  }
-  
+    text-align: center; /* 레이블 텍스트를 중앙 정렬 */
+}
+
+/* 중앙 정렬을 위한 기본 스타일 */
+.container {
+    width: 100%;
+    max-width: 600px; /* 원하는 최대 너비 설정 */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto; /* 컨테이너 중앙 정렬 */
+}
+
+/* 웹킷 브라우저 (Chrome, Safari)용 슬라이더 포인터 스타일 */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+    background: #FFEE56; /* 포인터 색상 */
+    cursor: pointer; /* 포인터 모양 */
+    border-radius: 50%; /* 둥근 포인터 */
+    border: 1px solid #ccc; /* 경계선 */
+}
+
+/* 파이어폭스용 슬라이더 포인터 스타일 */
+input[type="range"]::-moz-range-thumb {
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+    background: #FFEE56; /* 포인터 색상 */
+    cursor: pointer; /* 포인터 모양 */
+    border-radius: 50%; /* 둥근 포인터 */
+    border: 1px solid #ccc; /* 경계선 */
+}
+
+/* Edge 및 기타 브라우저용 슬라이더 포인터 스타일 */
+input[type="range"]::-ms-thumb {
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+    background: #FFEE56; /* 포인터 색상 */
+    cursor: pointer; /* 포인터 모양 */
+    border-radius: 50%; /* 둥근 포인터 */
+    border: 1px solid #ccc; /* 경계선 */
+}
+
+/* 슬라이더 포인터 색상 변경 */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; /* 포인터 크기 */
+    height: 16px; /* 포인터 크기 */
+    background: #FFEE56; /* 포인터 색상 */
+    cursor: pointer; /* 포인터 모양 */
+    border-radius: 50%; /* 둥근 포인터 */
+    border: 1px solid #ccc; /* 경계선 */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #FFEE56;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #FFEE56;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+/* 툴팁 배경색 변경 */
+.tooltip-inner {
+    background-color: #FFEE56; /* 툴팁 배경색 */
+    color: #000; /* 툴팁 텍스트 색상 */
+}
+
+/* 예/아니오 버튼 색상 변경 */
+.btn-toggle.active, .btn-toggle:active {
+    background-color: #FFEE56; /* 활성화된 버튼 배경색 */
+    border-color: #FFEE56; /* 활성화된 버튼 경계선 색상 */
+    color: #000; /* 버튼 텍스트 색상 */
+}
+
+.btn-toggle {
+    background-color: #FFEE56; /* 비활성화된 버튼 배경색 */
+    border-color: #FFEE56; /* 비활성화된 버튼 경계선 색상 */
+    color: #000; /* 버튼 텍스트 색상 */
+}
+
+/* 확인 버튼 색상 변경 */
+button.btn-warning {
+    background-color: #FFEE56; /* 버튼 배경색 */
+    border-color: #FFEE56; /* 버튼 경계선 색상 */
+    color: #000; /* 버튼 텍스트 색상 */
+}
+
+button.btn-warning:hover {
+    background-color: #FFD700; /* 버튼 호버 시 색상 (약간 어두운 노란색) */
+    border-color: #FFD700; /* 호버 시 경계선 색상 */
+    color: #000; /* 버튼 텍스트 색상 */
+}
+
