@@ -2,7 +2,6 @@
  ## 설치 방법
 
  1. 프로젝트 클론
-    '''bash
     git clone https://github.com/soobin0910/Drink_Select.git
 
  2. 가상 환경 설정
