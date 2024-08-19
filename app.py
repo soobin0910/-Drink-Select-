@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
 CORS(app)
@@ -33,10 +34,18 @@ def recommend():
     filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
                      (df['카페인유무'] == caffeine) & 
                      (df['커피유무'] == coffee)]
-    
+
+    # 필터링된 데이터에 대해서만 칼로리와 당류를 표준화
+    scaler = StandardScaler()
+    filtered_df[['칼로리', '당류']] = scaler.fit_transform(filtered_df[['칼로리', '당류']])
+
+    # 입력된 칼로리와 당류 데이터도 표준화
+    scaled_input = scaler.transform([[max_calories, max_sugar]])
+    scaled_calories, scaled_sugar = scaled_input[0]
+
     # 유클리드 거리 계산
-    filtered_df['score'] = np.sqrt((filtered_df['칼로리'] - max_calories)**2 + 
-                                   (filtered_df['당류'] - max_sugar)**2)
+    filtered_df['score'] = np.sqrt((filtered_df['칼로리'] - scaled_calories)**2 + 
+                                   (filtered_df['당류'] - scaled_sugar)**2)
     
     # 가장 가까운 10개 음료 추천
     recommendations = filtered_df.nsmallest(10, 'score')
@@ -55,12 +64,21 @@ def recommend_more():
     max_calories = data['calories']
     max_sugar = data['sugar']
 
+    # 선택한 카페 목록과 조건에 맞는 데이터 필터링
     filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
                      (df['카페인유무'] == caffeine) & 
                      (df['커피유무'] == coffee)]
-    
-    filtered_df['score'] = np.sqrt((filtered_df['칼로리'] - max_calories)**2 + 
-                                   (filtered_df['당류'] - max_sugar)**2)
+
+    # 필터링된 데이터에 대해서만 칼로리와 당류를 표준화
+    scaler = StandardScaler()
+    filtered_df[['칼로리', '당류']] = scaler.fit_transform(filtered_df[['칼로리', '당류']])
+
+    # 입력된 칼로리와 당류 데이터도 표준화
+    scaled_input = scaler.transform([[max_calories, max_sugar]])
+    scaled_calories, scaled_sugar = scaled_input[0]
+
+    filtered_df['score'] = np.sqrt((filtered_df['칼로리'] - scaled_calories)**2 + 
+                                   (filtered_df['당류'] - scaled_sugar)**2)
     
     recommendations = filtered_df.nsmallest(10, 'score')
     recommendations_list = recommendations.to_dict(orient='records')
