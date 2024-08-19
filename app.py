@@ -69,7 +69,7 @@ def recommend_more():
     # 선택한 카페 목록과 조건에 맞는 데이터 필터링
     filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
                      (df['카페인유무'] == caffeine) & 
-                     (df['커피유무'] == coffee)]
+                     (df['커피유무'] != coffee)]
     
     # 칼로리와 당류 특성만 추출하여 스케일링 (표준화)
     scaler = StandardScaler()
