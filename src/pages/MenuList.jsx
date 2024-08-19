@@ -1,33 +1,37 @@
-import  { useState, useEffect } from 'react';
-import { Container, ListGroup, Image } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Container, ListGroup } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import '../css/MenuList.css';
-import axios from 'axios'; // 메뉴 데이터를 불러오기 위해 axios 사용
+import axios from 'axios';
 
-function MenuList({ cafeId }) {
+function MenuList() {
+    const location = useLocation();
+    const { cafeName = 'Default Cafe Name' } = location.state || {};  // 기본값 설정
     const [menus, setMenus] = useState([]);
 
-    // API로부터 메뉴 데이터를 가져오는 함수
     useEffect(() => {
         async function fetchMenus() {
             try {
-                const response = await axios.get(`/api/menus/${cafeId}`);
-                setMenus(response.data); // 메뉴 데이터 상태 업데이트
+                const response = await axios.get(`http://localhost:5000/api/menus/${cafeName}`);
+                console.log('API Response:', response.data);
+                setMenus(response.data);
             } catch (error) {
                 console.error('Failed to fetch menus:', error);
             }
         }
 
         fetchMenus();
-    }, [cafeId]); // cafeId가 변경될 때마다 메뉴 데이터 재요청
+    }, [cafeName]);
 
     return (
-        <Container>
-            <ListGroup>
+        <Container className="body-control">
+            <h1 className="title mb-5"><strong>{cafeName}</strong></h1>
+            <ListGroup className="list mb-5">
                 {menus.map((menu, index) => (
                     <ListGroup.Item key={index} className="d-flex align-items-center">
-                        <Image src={menu.image} rounded style={{ width: '50px', height: '50px', marginRight: '20px' }} />
                         <div>
-                            <strong>{menu.name}</strong>  {/* 메뉴 이름 표시 */}
+                            <h5><strong>{menu.카페명}</strong></h5>
+                            <h5><strong>{menu.음료명}</strong></h5>
                         </div>
                     </ListGroup.Item>
                 ))}

@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node.js modules and build directories
 node_modules
 dist
 dist-ssr
@@ -23,11 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 
-
 # 가상 환경 폴더
 venv/
 
-# Python 기본
+# Python 파일 캐시
 __pycache__/
 *.py[cod]
 *.pyo
@@ -43,6 +43,3 @@ __pycache__/
 *.egg-info/
 dist/
 build/
-
-# 로그 파일
-*.log
