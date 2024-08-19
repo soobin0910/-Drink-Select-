@@ -60,10 +60,10 @@ const Result1 = () => {
                                 <Table striped bordered hover>
                                     <thead>
                                         <tr>
-                                            <th>칼로리</th>
-                                            <th>당류</th>
-                                            <th>포화지방</th>
-                                            <th>카페인</th>
+                                            <th>칼로리(kcal)</th>
+                                            <th>당류(g)</th>
+                                            <th>포화지방(g)</th>
+                                            <th>카페인(mg)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,8 +81,13 @@ const Result1 = () => {
                 </ListGroup>
             </Stack>
             <div className="button-container">
-                <Button variant="warning" onClick={() => navigate('/result2')}>더 추천받기</Button>{' '}
-                <Button variant="warning" onClick={() => navigate('/')}>결과 확인완료</Button>{' '}
+            <Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56' }} onClick={() => navigate('/result2')}>
+  더 추천받기
+</Button>{' '}
+<Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56' }} onClick={() => navigate('/')}>
+  결과 확인완료
+</Button>{' '}
+
             </div>
         </div>
     );
