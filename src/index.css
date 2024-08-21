@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'Freesentation-6SemiBold';
+  src: url('./src/fonts/Freesentation-6SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Freesentation-6SemiBold, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -23,6 +30,7 @@ a:hover {
 }
 
 body {
+  font-family: 'Freesentation-6SemiBold', sans-serif;
   margin: 0;
   display: flex;
   place-items: center;
