@@ -48,10 +48,8 @@ const Result1 = () => {
     }, []);
 
     return (
-        <div>
-            <header className="header">
-                <h1>추천결과</h1>
-            </header>
+        <div className="body-wrapper">
+    <h1 className="title"><strong>Part 3. 추천결과</strong></h1>
             <Stack gap={5}>
                 <ListGroup as="ol" numbered>
                     {recommendations.map((item, index) => (

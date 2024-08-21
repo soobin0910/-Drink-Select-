@@ -31,10 +31,8 @@ const Nutrientselect = () => {
     }
 
     return (
-        <div className="container justify-content-center">
-            <header className="header">
-                <h1>영양성분 선택</h1>
-            </header>
+        <div className="body-wrapper">
+    <h1 className="title"><strong>Part 2. 영양성분 선택</strong></h1>
             <div className="content" style={{ display: 'flex', alignItems: 'center' }}>
                 <span>영양성분 선택</span>
                 <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">칼로리에 대한 설명?</Tooltip>}>
