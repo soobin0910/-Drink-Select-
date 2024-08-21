@@ -48,7 +48,14 @@ function CafeSelect() {
                     </div>
                 ))}
             </div>
-            <Button variant={selected ? "warning" : "secondary"} size="lg" className="my-5" disabled={!selected}
+            <Button
+            className="my-5"
+            style={{
+                backgroundColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
+                borderColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
+                color: '#000'
+            }}
+            disabled={!selected}
                 onClick={() => navigate('/menulist', { state: { cafeName: selected ? selected.name : '' }})}>
                 선택 완료
             </Button>
