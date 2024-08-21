@@ -49,46 +49,52 @@ const Result2 = () => {
 
     return (
         <div className="body-wrapper">
-    <h1 className="title"><strong>Part 3. 추가 추천결과</strong></h1>
+            <h1 className="title"><strong>Part 3. 추가 추천결과</strong></h1>
             <Stack gap={5}>
-            <ListGroup as="ol" numbered>
-                    {recommendations.map((item, index) => (
-                        <ListGroup.Item as="li" key={index}>
-                            <Row className="align-items-center">
-                            <Col>
-                            <strong>{item.카페명}</strong>
-                            <div>{item.음료명}</div>
-                            </Col>
-                            <Col className="d-flex justify-content-end">
-                            {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명}
-                            className="drink-image" style={{ width: '50px', borderRadius: '50px' }}/>}
-                            </Col>
-                            </Row>
+                {recommendations.length === 0 ? (
+                     <div style={{ textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>
+                     추천 결과가 없습니다.
+                 </div>
+                ) : (
+                    <ListGroup as="ol" numbered>
+                        {recommendations.map((item, index) => (
+                            <ListGroup.Item as="li" key={index}>
+                                <Row className="align-items-center">
+                                    <Col>
+                                        <strong>{item.카페명}</strong>
+                                        <div>{item.음료명}</div>
+                                    </Col>
+                                    <Col className="d-flex justify-content-end">
+                                        {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명}
+                                        className="drink-image" style={{ width: '50px' }}/>}
+                                    </Col>
+                                </Row>
 
-                            <br/>
-                            <div>
-                                <Table striped bordered hover>
-                                    <thead>
-                                        <tr>
-                                            <th>칼로리</th>
-                                            <th>당류</th>
-                                            <th>포화지방</th>
-                                            <th>카페인</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{item.칼로리}</td>
-                                            <td>{item.당류}</td>
-                                            <td>{item.포화지방}</td>
-                                            <td>{item.카페인}</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                            </div>
-                        </ListGroup.Item>
-                    ))}
-                </ListGroup>
+                                <br/>
+                                <div>
+                                    <Table striped bordered hover>
+                                        <thead>
+                                            <tr>
+                                                <th>칼로리</th>
+                                                <th>당류</th>
+                                                <th>포화지방</th>
+                                                <th>카페인</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{item.칼로리}</td>
+                                                <td>{item.당류}</td>
+                                                <td>{item.포화지방}</td>
+                                                <td>{item.카페인}</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </div>
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                )}
             </Stack>
             <div className="button-container my-4 align-items-center justify-content-center d-flex">
                 <Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', margin: '5px', color: 'black' }} onClick={() => navigate('/result1')}>다시 확인하기</Button>{' '}

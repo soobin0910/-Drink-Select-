@@ -26,7 +26,7 @@ function Part1() {
     const cafes = [
         { id: 1, logo: 'starbucks.png', name: '스타벅스' },
         { id: 2, logo: 'hollys.png', name: '할리스' },
-        { id: 3, logo: 'twosome.png', name: '투썸 플레이스' },
+        { id: 3, logo: 'twosome.png', name: '투썸플레이스' },
         { id: 4, logo: 'gongcha.png', name: '공차' },
         { id: 5, logo: 'ediya.png', name: '이디야' },
         { id: 6, logo: 'tomntoms.png', name: '탐앤탐스' },
