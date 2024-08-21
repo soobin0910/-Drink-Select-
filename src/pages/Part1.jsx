@@ -53,10 +53,13 @@ function Part1() {
                 </div>
             ))}
         </div>
-        <Button 
-            variant={selected.length > 0 ? "warning" : "secondary"} 
-            size="lg" 
+        <Button  
             className="my-5" 
+            style={{
+                backgroundColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
+                borderColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
+                color: '#000'
+            }}  
             disabled={selected.length === 0} 
             onClick={() => {
                 localStorage.setItem('selectedCafes', JSON.stringify(selectedNames));
