@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Container, ListGroup } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { Container, ListGroup, Button } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/MenuList.css';
 import axios from 'axios';
 
 function MenuList() {
     const location = useLocation();
+    const navigate = useNavigate();
     const { cafeName = 'Default Cafe Name' } = location.state || {};  // 기본값 설정
     const [menus, setMenus] = useState([]);
 
@@ -26,7 +27,7 @@ function MenuList() {
     return (
         <Container className="body-control">
             <h1 className="title mb-5"><strong>{cafeName}</strong></h1>
-            <ListGroup className="list mb-5">
+            <ListGroup className="list mb-4">
                 {menus.map((menu, index) => (
                     <ListGroup.Item key={index} className="d-flex align-items-center">
                           <img 
@@ -42,6 +43,12 @@ function MenuList() {
                     </ListGroup.Item>
                 ))}
             </ListGroup>
+            
+            <Button className="my-3" style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', color: '#000' }}
+            onClick={() => navigate('/')}>
+              <h4 className="mb-0 p-1"><strong>메인 페이지로</strong></h4>
+            </Button>
+
         </Container>
     );
 }

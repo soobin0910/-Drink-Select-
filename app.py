@@ -36,7 +36,7 @@ def recommend():
     
     # 예외 처리: 조건에 맞는 음료가 0개일 경우
     if len(filtered_df) == 0:
-        return jsonify({"error": "조건에 맞는 음료가 없습니다."}), 404
+        return jsonify({"조건에 맞는 음료 없음"}), 404
         
     # 칼로리와 당류 특성만 추출하여 스케일링 (표준화)
     scaler = StandardScaler()
@@ -77,7 +77,7 @@ def recommend_more():
     
     # 예외 처리: 조건에 맞는 음료가 0개일 경우
     if len(filtered_df) == 0:
-        return jsonify({"error": "조건에 맞는 음료가 없습니다."}), 404
+        return jsonify({"조건에 맞는 음료 없음"}), 404
     
     # 칼로리와 당류 특성만 추출하여 스케일링 (표준화)
     scaler = StandardScaler()
