@@ -31,7 +31,7 @@ const Nutrientselect = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container justify-content-center">
             <header className="header">
                 <h1>영양성분 선택</h1>
             </header>
