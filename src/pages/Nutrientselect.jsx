@@ -30,11 +30,20 @@ const Nutrientselect = () => {
         navigate('/result1');
     }
 
+    const getButtonStyle = (buttonValue) => {
+        return {
+            backgroundColor: caffeine === buttonValue ? '#FFEE56' : '#D9D9D9',
+            borderColor: caffeine === buttonValue ? '#FFEE56' : '#D9D9D9',
+            color: '#000',
+            marginRight: buttonValue === 1 ? '5px' : '0',
+            borderRadius: '10px'
+        };
+    };
+
     return (
         <div className="body-wrapper">
-    <h1 className="title"><strong>Part 2. 영양성분 선택</strong></h1>
+            <h1 className="title"><strong>Part 2. 영양성분 선택</strong></h1>
             <div className="content" style={{ display: 'flex', alignItems: 'center' }}>
-                <span>영양성분 선택</span>
                 <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">칼로리에 대한 설명?</Tooltip>}>
                     <span className="d-inline-block" style={{ marginLeft: '5px' }}>
                         <Button disabled style={{ pointerEvents: 'none', backgroundColor: '#FFEE56', borderColor: '#FFEE56' }}>
@@ -73,29 +82,23 @@ const Nutrientselect = () => {
             </Form>
             <div className="content">
                 <div style={{ marginBottom: '10px' }}>카페인 유무 선택</div>
-                <ToggleButtonGroup type="radio" name="options" value={caffeine} onChange={(val) => setCaffeine(val)}>
+                <ToggleButtonGroup 
+                    type="radio" 
+                    name="options" 
+                    value={caffeine} 
+                    onChange={(val) => setCaffeine(val)}
+                >
                     <ToggleButton 
                         id="tbg-radio-2" 
                         value={1} 
-                        style={{ 
-                            backgroundColor: '#FFEE56', 
-                            borderColor: '#FFEE56', 
-                            color: '#000', 
-                            marginRight: '5px',
-                            borderRadius: '10px'  
-                        }}
+                        style={getButtonStyle(1)}
                     >
                         예
                     </ToggleButton>
                     <ToggleButton 
                         id="tbg-radio-3" 
                         value={0} 
-                        style={{ 
-                            backgroundColor: '#FFEE56', 
-                            borderColor: '#FFEE56', 
-                            color: '#000',
-                            borderRadius: '10px'  
-                        }}
+                        style={getButtonStyle(0)}
                     >
                         아니오
                     </ToggleButton>
@@ -103,11 +106,11 @@ const Nutrientselect = () => {
             </div>
             <Form className="content">
                 <Form.Check 
-        type="checkbox"
-        id="default-checkbox"
-        label="커피 제외하기"
-        checked={excludeCoffee === 1}
-        onChange={(e) => setExcludeCoffee(e.target.checked ? 1 : 0)}
+                    type="checkbox"
+                    id="default-checkbox"
+                    label="커피 제외하기"
+                    checked={excludeCoffee === 1}
+                    onChange={(e) => setExcludeCoffee(e.target.checked ? 1 : 0)}
                 />
             </Form>
             <Button 
