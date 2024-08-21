@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/result1.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 import Stack from 'react-bootstrap/Stack';
 import Table from 'react-bootstrap/Table';
@@ -54,10 +56,19 @@ const Result1 = () => {
                 <ListGroup as="ol" numbered>
                     {recommendations.map((item, index) => (
                         <ListGroup.Item as="li" key={index}>
-                            {item.카페명}
+                            <Row className="align-items-center">
+                            <Col>
+                            <strong>{item.카페명}</strong>
                             <div>{item.음료명}</div>
-                            {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명} className="drink-image"/>
-                        }
+                            </Col>
+                            <Col className="d-flex justify-content-end">
+                            {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명}
+                            className="drink-image" style={{ width: '50px' }}/>}
+                            </Col>
+                            </Row>
+
+                            <br/>
+
                             <div>
                                 <Table striped bordered hover>
                                     <thead>
@@ -82,11 +93,11 @@ const Result1 = () => {
                     ))}
                 </ListGroup>
             </Stack>
-            <div className="button-container">
-            <Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56' }} onClick={() => navigate('/result2')}>
+            <div className="button-container my-4 align-items-center justify-content-center d-flex">
+            <Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', margin: '5px', color: 'black' }} onClick={() => navigate('/result2')}>
   더 추천받기
 </Button>{' '}
-<Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56' }} onClick={() => navigate('/')}>
+<Button style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', margin: '5px', color: 'black' }} onClick={() => navigate('/')}>
   결과 확인완료
 </Button>{' '}
 
