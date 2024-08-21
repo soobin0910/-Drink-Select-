@@ -51,8 +51,8 @@ function CafeSelect() {
             <Button
             className="my-5"
             style={{
-                backgroundColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
-                borderColor: selected.length > 0 ? '#FFEE56' : '#BDBDBD',
+                backgroundColor: selected ? '#FFEE56' : '#BDBDBD',
+                borderColor: selected ? '#FFEE56' : '#BDBDBD',
                 color: '#000'
             }}
             disabled={!selected}
