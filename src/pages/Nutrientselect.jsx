@@ -42,19 +42,9 @@ const Nutrientselect = () => {
 
     return (
         <div className="body-wrapper">
-            <h1 className="title"><strong>Part 2. 영양성분 선택</strong></h1>
-            <div className="content" style={{ display: 'flex', alignItems: 'center' }}>
-                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">칼로리에 대한 설명?</Tooltip>}>
-                    <span className="d-inline-block" style={{ marginLeft: '5px' }}>
-                        <Button disabled style={{ pointerEvents: 'none', backgroundColor: '#FFEE56', borderColor: '#FFEE56' }}>
-                            ?
-                        </Button>
-                    </span>
-                </OverlayTrigger>
-            </div>
-            <Form className="content">
-                <Form.Group className="form-group">
-                    <Form.Label className="form-label">칼로리: {calorieValue} kcal</Form.Label>
+            <h1 className="title" style={{marginBottom: '100px'}}><strong>Part 2. 영양성분 선택</strong></h1>
+                <Form.Group style={{ width: '70%', marginBottom: '100px'}}>
+                    <Form.Label style={{ fontSize: '25px' }}>칼로리: {calorieValue} kcal</Form.Label>
                     <RangeSlider 
                         value={calorieValue}
                         min={0}
@@ -64,10 +54,11 @@ const Nutrientselect = () => {
                         tooltipLabel={(currentValue) => `${currentValue} kcal`}  // 말풍선 내용 형식 지정
                         onChange={(e) => setCalorieValue(e.target.value)} 
                         className="range-slider"
+                        style={{ width: '100%'}}
                     />
                 </Form.Group>
-                <Form.Group className="form-group">
-                    <Form.Label className="form-label">당류: {sugarValue} g</Form.Label>
+                <Form.Group style={{ width: '70%'}}>
+                    <Form.Label style={{ fontSize: '25px' }}>당류: {sugarValue} g</Form.Label>
                     <RangeSlider 
                         value={sugarValue}
                         min={0}
@@ -77,16 +68,17 @@ const Nutrientselect = () => {
                         tooltipLabel={(currentValue) => `${currentValue} g`}  // 말풍선 내용 형식 지정
                         onChange={(e) => setSugarValue(e.target.value)} 
                         className="range-slider"
+                        style={{ width: '100%'}}
                     />
                 </Form.Group>
-            </Form>
-            <div className="content">
-                <div style={{ marginBottom: '10px' }}>카페인 유무 선택</div>
+            <div>
+                <div style={{ marginBottom: '10px', marginTop: '30px', fontSize: '25px'}}>카페인 유무 선택</div>
                 <ToggleButtonGroup 
                     type="radio" 
                     name="options" 
                     value={caffeine} 
                     onChange={(val) => setCaffeine(val)}
+                    style={{ width: '100%', marginBottom: '40px'}}
                 >
                     <ToggleButton 
                         id="tbg-radio-2" 
@@ -104,20 +96,18 @@ const Nutrientselect = () => {
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
-            <Form className="content">
                 <Form.Check 
                     type="checkbox"
                     id="default-checkbox"
-                    label="커피 제외하기"
+                    label={<span style={{ fontSize: '20px'}}>커피 제외하기</span>}
                     checked={excludeCoffee === 1}
                     onChange={(e) => setExcludeCoffee(e.target.checked ? 1 : 0)}
                 />
-            </Form>
             <Button 
-                className="content" 
                 variant="warning" 
                 onClick={handleConfirmClick}
-                style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', color: '#000' }}
+                style={{ backgroundColor: '#FFEE56', borderColor: '#FFEE56', color: '#000', marginTop: '30px', marginBottom: '120px', fontSize: '20px'}}
+                
             >
                 확인
             </Button>
