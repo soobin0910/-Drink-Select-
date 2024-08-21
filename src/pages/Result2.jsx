@@ -56,6 +56,8 @@ const Result2 = () => {
                         <ListGroup.Item as="li" key={index}>
                             {item.카페명}
                             <div>{item.음료명}</div>
+                            {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명} className="drink-image"/>
+                        }
                             <div>
                                 <Table striped bordered hover>
                                     <thead>

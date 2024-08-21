@@ -8,14 +8,14 @@ app = Flask(__name__)
 CORS(app)
 
 # 피클 파일을 로드 (음료 데이터)
-df = pd.read_pickle('data/cafe.pkl')
+df = pd.read_pickle('data/cafe_re.pkl')
 
 # 카페 목록 및 음료 리스트 제공 API
 @app.route('/api/menus/<string:cafe_name>', methods=['GET'])
 def get_menus(cafe_name):
     # 카페명으로 필터링
     filtered_df = df[df['카페명'] == cafe_name]
-    menu_list = filtered_df[['카페명', '음료명']].to_dict(orient='records')
+    menu_list = filtered_df[['카페명', '음료명','이미지 경로']].to_dict(orient='records')
     
     return jsonify(menu_list)
 
