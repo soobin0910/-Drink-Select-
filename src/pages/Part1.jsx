@@ -43,7 +43,7 @@ function Part1() {
     <h1 className="title"><strong>Part 1. 카페 선택</strong></h1>
     <Container className="text-center">
         <h2><strong>원하시는 카페를 선택해주세요.</strong></h2>
-        <h4>(최소 1개, 최대 12개까지 선택 가능)</h4>
+        <h4 style={{ color: '#797979', marginTop: '2%', marginBottom: '20%' }}>(최소 1개, 최대 12개까지 선택 가능)</h4>
         <div className="logo-grid">
             {cafes.map(cafe => (
                 <div key={cafe.id} className={`logo-wrapper ${selected.includes(cafe.id) ? 'selected' : ''}`}
