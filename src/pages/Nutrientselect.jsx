@@ -16,14 +16,14 @@ const Nutrientselect = () => {
 
     const [calorieValue, setCalorieValue] = useState(0);
     const [sugarValue, setSugarValue] = useState(0);
-    const [caffeine, setCaffeine] = useState('예');  // 카페인 유무 상태
-    const [excludeCoffee, setExcludeCoffee] = useState(false); // 커피 제외 여부 상태
+    const [caffeine, setCaffeine] = useState(1);  // 카페인 유무 상태
+    const [excludeCoffee, setExcludeCoffee] = useState(0); // 커피 제외 여부 상태
 
     const handleConfirmClick = () => {
         // 선택된 옵션을 로컬 스토리지에 저장
         localStorage.setItem('calorieValue', calorieValue);
         localStorage.setItem('sugarValue', sugarValue);
-        localStorage.setItem('caffeine', caffeine === '예' ? true : false);
+        localStorage.setItem('caffeine', caffeine);
         localStorage.setItem('excludeCoffee', excludeCoffee);
 
         // result1 페이지로 이동
@@ -78,7 +78,7 @@ const Nutrientselect = () => {
                 <ToggleButtonGroup type="radio" name="options" value={caffeine} onChange={(val) => setCaffeine(val)}>
                     <ToggleButton 
                         id="tbg-radio-2" 
-                        value="예" 
+                        value={1} 
                         style={{ 
                             backgroundColor: '#FFEE56', 
                             borderColor: '#FFEE56', 
@@ -91,7 +91,7 @@ const Nutrientselect = () => {
                     </ToggleButton>
                     <ToggleButton 
                         id="tbg-radio-3" 
-                        value="아니오" 
+                        value={0} 
                         style={{ 
                             backgroundColor: '#FFEE56', 
                             borderColor: '#FFEE56', 
@@ -105,11 +105,11 @@ const Nutrientselect = () => {
             </div>
             <Form className="content">
                 <Form.Check 
-                    type="checkbox"
-                    id="default-checkbox"
-                    label="커피 제외하기"
-                    checked={excludeCoffee}
-                    onChange={(e) => setExcludeCoffee(e.target.checked)}
+        type="checkbox"
+        id="default-checkbox"
+        label="커피 제외하기"
+        checked={excludeCoffee === 1}
+        onChange={(e) => setExcludeCoffee(e.target.checked ? 1 : 0)}
                 />
             </Form>
             <Button 
