@@ -34,7 +34,7 @@ function MenuList() {
                             src={`http://localhost:5000/${menu['이미지 경로']}`} 
                             alt={`${menu.음료명} 이미지`} 
                             className="menu-logo" 
-                            style={{ width: '50px', height: '50px', marginRight: '15px' }} // 스타일 조정
+                            style={{ width: '50px', height: '50px', marginRight: '15px', borderRadius: '50px' }} // 스타일 조정
                         />
                         <div>
                             <h5><strong>{menu.카페명}</strong></h5>

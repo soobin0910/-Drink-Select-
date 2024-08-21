@@ -61,7 +61,7 @@ const Result2 = () => {
                             </Col>
                             <Col className="d-flex justify-content-end">
                             {<img src={`http://localhost:5000/${item['이미지 경로']}`} alt={item.음료명}
-                            className="drink-image" style={{ width: '50px' }}/>}
+                            className="drink-image" style={{ width: '50px', borderRadius: '50px' }}/>}
                             </Col>
                             </Row>
 
