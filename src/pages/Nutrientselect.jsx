@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/nutrientselect.css';
-
+import { Tooltip, OverlayTrigger, Col, Row, Image } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
@@ -39,6 +37,12 @@ const Nutrientselect = () => {
             borderRadius: '10px'
         };
     };
+
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            &apos;예&apos;를 누르면 카페인 상관 없이 모든 음료가 추천됩니다!
+        </Tooltip>
+    );
 
     return (
         <div className="body-wrapper">
@@ -72,7 +76,24 @@ const Nutrientselect = () => {
                     />
                 </Form.Group>
             <div>
-                <div style={{ marginBottom: '10px', marginTop: '30px', fontSize: '25px'}}>카페인 유무 선택</div>
+            <div style={{ marginBottom: '10px', marginTop: '30px', fontSize: '25px' }}>
+                <Row className="align-items-center">
+                <Col className="px-0">
+          <p className="mb-0">카페인 유무 선택</p>
+        </Col>
+        <Col xs="auto" className="px-1">
+          <OverlayTrigger
+            placement="right"
+            delay={{ show: 250, hide: 300 }}
+            overlay={renderTooltip}
+          >
+            <span>
+            <Image src="questionmark.png" style={{ width: '30px', height: '30px'}}/>
+            </span>
+          </OverlayTrigger>
+        </Col>
+      </Row>
+    </div>
                 <ToggleButtonGroup 
                     type="radio" 
                     name="options" 
