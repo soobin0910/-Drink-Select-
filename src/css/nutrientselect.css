@@ -19,3 +19,8 @@
     width: 100vw; /* 뷰포트 너비를 100%로 설정 */
   }
   
+  .custom-tooltip {
+    max-width: 150px;
+    word-wrap: break-word; /* 긴 텍스트 줄바꿈 */
+  }
+  

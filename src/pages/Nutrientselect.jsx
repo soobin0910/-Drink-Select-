@@ -39,7 +39,7 @@ const Nutrientselect = () => {
     };
 
     const renderTooltip = (props) => (
-        <Tooltip id="button-tooltip" {...props}>
+        <Tooltip id="button-tooltip" {...props} className="custom-tooltip">
             &apos;예&apos;를 누르면 카페인 상관 없이 모든 음료가 추천됩니다!
         </Tooltip>
     );
