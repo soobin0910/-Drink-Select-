@@ -24,15 +24,35 @@ def get_menus(cafe_name):
 def recommend():
     data = request.json
     selected_cafes = data['cafes']
-    caffeine = data['caffeine']
-    coffee = data['coffee']
+    caffeine = data['caffeine']  # 카페인유무
+    coffee = data['coffee']   # 커피 제외하기
     max_calories = data['calories']
     max_sugar = data['sugar']
+
+    
+
+    if caffeine == 0:
+        if coffee == 1:   # 카페인 아니오 선택 & 커피 제외하기 yes
+                    filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
+                     (df['카페인유무'] == caffeine) & 
+                     (df['커피유무'] != coffee)]
+        else:   # 카페인 아니오 선택만
+            filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
+                     (df['카페인유무'] == caffeine)]
+    else:
+    # 카페인 예 선택만
+        filtered_df = df[(df['카페명'].isin(selected_cafes))]
+
+
+    '''
+    if caffeine == 0:
+        df['카페인유무'] == caffeine
 
     # 선택한 카페 목록과 조건에 맞는 데이터 필터링
     filtered_df = df[(df['카페명'].isin(selected_cafes)) & 
                      (df['카페인유무'] == caffeine) & 
                      (df['커피유무'] != coffee)]
+                     '''
     
     # 칼로리와 당류 특성만 추출하여 스케일링 (표준화)
     scaler = StandardScaler()
