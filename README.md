@@ -37,8 +37,6 @@
 ![슬라이드18](https://github.com/user-attachments/assets/c4f3dfa3-2ad9-4a5c-8b04-1534cbf4fdc1)
 ![슬라이드19](https://github.com/user-attachments/assets/ed2ffda4-a198-4f6b-b2a7-4c0936495d98)
 ![슬라이드20](https://github.com/user-attachments/assets/cf61abb6-c617-4b51-8084-119e3353e526)
-![슬라이드21](https://github.com/user-attachments/assets/d1d7a287-9515-459b-85aa-4ec232cf54c5)
-
 
 ## 🍀실행영상 
 https://github.com/user-attachments/assets/aa4968a4-de2f-4756-abea-fc73d2ae0182
